@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <h1>Dashboard</h1>
+    <p><strong>Today's Unique Customers:</strong> {{ customer_count }}</p>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Payment</th>
+            <th>Actions</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order[0] }}</td>
+            <td>{{ order[1] }}</td>
+            <td>{{ order[2] }}</td>
+            <td>{{ order[3] }}</td>
+            <td>₹{{ order[4] }}</td>
+            <td>{{ order[5] }}</td>
+            <td>{{ order[6] }}</td>
+            <td>
+                <a href="/update_status/{{ order[0] }}/status/Served">Mark Served</a> |
+                <a href="/update_status/{{ order[0] }}/payment_status/Paid">Mark Paid</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">Back to Menu</a>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Order Menu</title>
+</head>
+
+<body>
+    <h1>Place Your Order</h1>
+    <form action="/bill" method="POST">
+        <label>Customer Name:</label>
+        <input type="text" name="customer_name" required><br><br>
+
+        {% for item in menu %}
+        <div>
+            <input type="checkbox" name="item" value="{{ item.name }}">
+            {{ item.name }} - ₹{{ item.price }}
+            <input type="number" name="quantity" min="1" placeholder="Qty">
+        </div>
+        {% endfor %}
+
+        <br>
+        <button type="submit">Generate Bill</button>
+    </form>
+</body>
+
+</html>
